@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="elog-v2.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/71e80e1ed24052fd35ed91ad4026b198ad9e03cb/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/71e80e1ed24052fd35ed91ad4026b198ad9e03cb/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hdl/elog/v2.0.2/77c6cdd90eed5447a54fb9545a52c5b95c0c2cfc/elog-v2.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

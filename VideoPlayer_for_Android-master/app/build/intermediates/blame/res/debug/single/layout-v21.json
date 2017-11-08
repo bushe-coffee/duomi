@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v21/notification_template_icon_group.xml"
+    }
+]

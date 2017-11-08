@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bj"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/view_welcome_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/guangdian_logo"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/view_welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_welcome_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text="智能识别请稍后..."
+        android:textColor="@android:color/white"
+        android:textSize="18dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/layout-v11/notification_media_action.xml"
+    }
+]

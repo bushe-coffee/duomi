@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/bushetianzhen/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.5/442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375/universal-image-loader-1.9.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.5_fb47af75a4fb81d9801390b6a0df0e562a35a5c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/libs/libksyplayer.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="98fc85bba494b084c2ba96fa255811aaed05764d">
+        <dex dex="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/pre-dexed/debug/libksyplayer_52fbc61f4067ba0f9f00e1c06eb391b302f6c371.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/libs/libksystat.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f85583728bc226413db291e262bdb473a1b719ce">
+        <dex dex="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/pre-dexed/debug/libksystat_2718a97bebb5695609293567d5f10e17ecea9564.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="07de5c888e8f6ae635e8872c23f17ee20bea4ec9">
+        <dex dex="/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/pre-dexed/debug/classes_7bec8421d83b56d8332fbd130bd1f3851d162fd4.jar" />
+    </item>
+
+</items>
