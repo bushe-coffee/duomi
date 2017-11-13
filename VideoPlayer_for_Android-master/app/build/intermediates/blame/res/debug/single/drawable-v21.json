@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/notification_action_background.xml"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/abc_edit_text_material.xml"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/drawable-v21/notification_action_background.xml"
     }
 ]

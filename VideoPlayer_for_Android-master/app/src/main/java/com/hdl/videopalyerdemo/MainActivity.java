@@ -1,36 +1,36 @@
 package com.hdl.videopalyerdemo;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterViewFlipper;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hdl.videopalyerdemo.adapters.FilperAdapter;
 import com.hdl.videopalyerdemo.adapters.ProductFilperAdapter;
 import com.hdl.videopalyerdemo.models.AnalysisResultModel;
 import com.hdl.videopalyerdemo.models.CommendListModel;
 import com.hdl.videopalyerdemo.models.CommendModel;
 import com.hdl.videopalyerdemo.models.FacesModel;
+import com.hdl.videopalyerdemo.models.PersonModel;
 import com.hdl.videopalyerdemo.models.ProductModel;
 import com.hdl.videopalyerdemo.models.ProductResultModels;
 import com.hdl.videopalyerdemo.utils.NetWorkCallback;
@@ -38,6 +38,7 @@ import com.hdl.videopalyerdemo.utils.NetWorkUtils;
 import com.hdl.videopalyerdemo.utils.YiPlusUtilities;
 import com.hdl.vol.OnVedioPalyerListener;
 import com.hdl.vol.VedioPlayer;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,27 +47,37 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private VedioPlayer vpPlayer;
-    //http://bu.dressplus.cn/video/recommand-system/1504193316.mp4
     private String url = "";
     private ProgressDialog mProgressDialog;
     private SeekBar sbProgress;
+
     private boolean isSeekToed = true;
+    private boolean mIsPlaying = false;
+    private boolean isContentShow = false;
+    // 截图 处理 图像
+    private Bitmap screenBitmap;
+
+    private LinearLayout mContent;
+    private RelativeLayout mContentParent;
+    private Button mContentbg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sbProgress = (SeekBar) findViewById(R.id.sb_progress);
+        mContent = (LinearLayout) findViewById(R.id.main_content);
+        mContentParent = (RelativeLayout) findViewById(R.id.main_content_parent);
+        mContentbg = (Button) findViewById(R.id.main_content_bg);
+
         sbProgress.setVisibility(View.INVISIBLE);
         sbProgress.setFocusable(false);
         sbProgress.setFocusableInTouchMode(false);
@@ -91,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 isSeekToed = true;
             }
         });
+
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("加载中...");
         vpPlayer = (VedioPlayer) findViewById(R.id.vp_player);
@@ -105,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPrepare(long total) {
                 sbProgress.setMax((int) total);
-
                 mProgressDialog.dismiss();
             }
 
@@ -136,28 +147,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPlaying(int curBuffPercent) {
                 //Log.e("yang", "onPlaying:" + curBuffPercent);
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(vpPlayer != null) {
+                                    sbProgress.setProgress((int) vpPlayer.getCurrentPosition());
+                                }
+                            }
+                        });
+                    }
+                }, 0, 1000);
             }
 
             @Override
             public void onReload() {
             }
         });
+
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        sbProgress.setProgress((int) vpPlayer.getCurrentPosition());
-                    }
-                });
-            }
-        }, 0, 1000);
+        PREPARE_ALL_DATA = false;
+        prepareAllData();
     }
-
-    private int curProgress = 0;
 
     @Override
     protected void onDestroy() {
@@ -184,50 +198,66 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("yangxinyu    " + keyCode);
 
         if (keyCode == KeyEvent.KEYCODE_MENU) {
+            if (screenBitmap != null) {
+                screenBitmap.recycle();
+                screenBitmap = null;
+            }
+
+            if (mIsPlaying) {
+                vpPlayer.pausePlay();
+                mIsPlaying = false;
+            }
+
             screenCapNotRoot();
         } else if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (IS_SHOWING_WINDOW) {
+            if (isContentShow) {
                 sendMessageForHandle(3, null);
+                return true;
+            }
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+            if (mIsPlaying) {
+                vpPlayer.pausePlay();
+                mIsPlaying = false;
+            } else {
+                vpPlayer.startPlay();
+                mIsPlaying = true;
             }
         }
 
         return super.onKeyDown(keyCode, event);
     }
 
-    // 截图 处理 图像
-    private Bitmap screenBitmap;
-
     private void screenCapNotRoot() {
-        if (screenBitmap != null) {
-            screenBitmap.recycle();
-            screenBitmap = null;
-        }
-
         screenBitmap = vpPlayer.getScreenShot();
 
-        prepareAllData();
-        showYiPlusLogo(true);
-        screenCapAndRequest();
-    }
+        View loadingView = showYiPlusLogo(true);
+        changeLayout(loadingView);
 
-    public void onPlay(View view) {
-        vpPlayer.startPlay();
-    }
-
-    public void onPause(View view) {
-        vpPlayer.pausePlay();
+        try {
+            if (screenBitmap == null) {
+                // TODO  识别失败
+                System.out.println("yangxinyu    识别失败 ");
+                View errorView = showYiPlusLogo(false);
+                changeLayout(errorView);
+            } else {
+                // TODO show shibie result
+                if (PREPARE_ALL_DATA) {
+                    System.out.println("yangxinyu    开始 分析截图数据 ");
+                    analysisImage();
+                } else {
+                    Toast.makeText(this, "网络不给力呀...", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // handle data ****************************************************
 
     private CommendListModel models;
     private static boolean PREPARE_ALL_DATA = false;
-    private static boolean PREPARE_IMAGE_BASE64 = false;
-    private static boolean IS_SHOWING_WINDOW = false;
     private boolean isFirstPage = true;
-    private WindowManager manager;
-    private View mContainerView;
-    private String mBitmapBase64;
     private AnalysisResultModel mAnalysisResultModel;
     private final Object synchronizedObject = new Object();
     private List<ProductModel> product_list = new ArrayList<>();
@@ -270,26 +300,31 @@ public class MainActivity extends AppCompatActivity {
     private ImageView taobaoImage;
     private Button taobaoBg;
 
-
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.arg1 == 1) {
-                if (!YiPlusUtilities.isStringNullOrEmpty(mBitmapBase64) && PREPARE_ALL_DATA && PREPARE_IMAGE_BASE64) {
-                    PREPARE_IMAGE_BASE64 = false;
-                    // 任何 图片都会有一个结果。只是返回的是不是 空
-                    Product_Face = 0;
-                    analysisImage();
-                }
+
             } else if (msg.arg1 == 2) {
                 //  set right data and show 识别 列表
+                System.out.println("yangxinyu  selectRightResult  ");
                 SelectRightResult();
             } else if (msg.arg1 == 3) {
-                // close the service
-                manager.removeViewImmediate(mContainerView);
-                IS_SHOWING_WINDOW = false;
-                mContainerView = null;
+                if (isContentShow) {
+                    isContentShow = false;
+                    mContentParent.setVisibility(View.GONE);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT);
+                    vpPlayer.setLayoutParams(params);
+//                    mVideoView.setFocusable(true);
+//                    mVideoView.setFocusableInTouchMode(true);
+
+                    if (!mIsPlaying) {
+                        vpPlayer.startPlay();
+                        mIsPlaying = true;
+                    }
+                }
             } else if (msg.arg1 == 4) {
                 isFirstPage = false;
                 Bundle bundle = msg.getData();
@@ -313,10 +348,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // show detail view
-                    updateManagetView(models.getModels(arg2), type, people);
+                    View view = updateManagetView(models.getModels(arg2), type, people);
+                    changeLayout(view);
                 } else {
                     // click product
-                    showProductDetailView();
+                    View view = showProductDetailView();
+                    changeLayout(view);
                 }
             }
         }
@@ -335,8 +372,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray array = new JSONArray(res);
                         models = new CommendListModel(array);
                         PREPARE_ALL_DATA = true;
-
-                        sendMessageForHandle(1, null);
+                        System.out.println("yangxinyu  prepare data is ok");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -345,24 +381,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showYiPlusLogo(boolean isOK) {
-        if (manager == null) {
-            manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        }
+    private void changeLayout(View view) {
+        if (mContent != null) {
+            mContent.removeAllViews();
+            if (!isContentShow) {
+                mContentParent.setVisibility(View.VISIBLE);
+                mContentbg.setFocusable(true);
+                mContentbg.setFocusableInTouchMode(true);
+                mContentbg.requestFocus();
+                isContentShow = true;
+            }
 
-        WindowManager.LayoutParams params = setLayoutParams();
-        params.height = WindowManager.LayoutParams.MATCH_PARENT;
-        View view = getWelcomeViewPage(isOK);
-        addViewToManager(view, params);
+            mContent.addView(view);
+        }
     }
 
-    private void screenCapAndRequest() {
-        mBitmapBase64 = "";
-        if (screenBitmap != null) {
-            mBitmapBase64 = YiPlusUtilities.BitmapToBase642(screenBitmap);
-            PREPARE_IMAGE_BASE64 = true;
-            sendMessageForHandle(1, null);
-        }
+    // isOk : true 正在识别 ，false 表示识别错误
+    private View showYiPlusLogo(boolean isOK) {
+        View view = getWelcomeViewPage(isOK);
+        return view;
     }
 
     private void sendMessageForHandle(int arg, Bundle bundle) {
@@ -377,33 +414,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private WindowManager.LayoutParams setLayoutParams() {
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-
-        DisplayMetrics metrics = new DisplayMetrics();
-        manager.getDefaultDisplay().getMetrics(metrics);
-        params.width = metrics.widthPixels / 3;
-        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
-        params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND |
-                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
-                WindowManager.LayoutParams.FLAG_SECURE;
-
-        params.gravity = Gravity.RIGHT | Gravity.TOP;
-        params.dimAmount = 0.45f;
-//        params.alpha = 0.9f;
-
-        return params;
-    }
-
     private View getWelcomeViewPage(boolean isOK) {
-        View view = LayoutInflater.from(this).inflate(R.layout.view_welcome_page, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.view_welcome_page, mContent, false);
 
         ImageButton image = (ImageButton) view.findViewById(R.id.view_welcome_image);
         TextView text = (TextView) view.findViewById(R.id.view_welcome_text);
         if (isOK) {
-            image.setImageResource(R.drawable.guangdian_logo);
+            image.setImageResource(R.drawable.yiplus_logo);
             text.setText("智能识别请稍后...");
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation_scale_big);
             animation.setDuration(1000);
@@ -411,8 +428,6 @@ public class MainActivity extends AppCompatActivity {
             animation.setRepeatCount(5);
             image.startAnimation(animation);
         } else {
-//            image.setImageResource(R.drawable.result_error);
-
             if (screenBitmap != null) {
                 image.setImageBitmap(screenBitmap);
             } else {
@@ -436,23 +451,13 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
-    private void addViewToManager(View view, WindowManager.LayoutParams params) {
-        if (manager != null) {
-            if (mContainerView != null) {
-                manager.removeViewImmediate(mContainerView);
-                mContainerView = null;
-            }
-
-            view.startAnimation(AnimationUtils.loadAnimation(this, R.anim.animation_join));
-            manager.addView(view, params);
-            mContainerView = view;
-        }
-    }
-
     private void analysisImage() {
+
+        Product_Face = 0;
 
         String time = (System.currentTimeMillis() / 1000) + "";
         String data = YiPlusUtilities.getPostParams(time);
+        String mBitmapBase64 = YiPlusUtilities.getBase64FromBitmap(screenBitmap);
 
         String param = null;
         try {
@@ -512,139 +517,111 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showProductDetailView() {
-        if (manager == null) {
-            manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        }
-
-        WindowManager.LayoutParams params = setLayoutParams();
+    private View showProductDetailView() {
         View view = getViewForWindowToProduct();
-
-        addViewToManager(view, params);
+        return view;
     }
 
-    private void updateManagetView(List<CommendModel> datas, String source, String people) {
-        if (manager == null) {
-            manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        }
-
-        WindowManager.LayoutParams params = setLayoutParams();
+    private View updateManagetView(List<CommendModel> datas, String source, String people) {
         View view = getViewForWindowToDetail(datas, source, people);
-
-        addViewToManager(view, params);
+        return view;
     }
 
     private void SelectRightResult() {
         clearData();
 
+        String name;
         // Show analysis result
         if (mAnalysisResultModel != null) {
 
-            Map<String, List<String>> map = handleAnalysisResult();
-            if (map == null || map.isEmpty()) {
-                // analysis face is null
-                Log.d("yang", "没有 识别出来 人 ");
-                noAnalysisFaceResult();
+            FacesModel faces = mAnalysisResultModel.getFaces();
+            // get the first item as the person
+            if (faces != null) {
+                List<PersonModel> personModels = faces.getFace_attribute();
+                if (personModels != null && !YiPlusUtilities.isListNullOrEmpty(personModels)) {
+                    name = personModels.get(0).getStar_name();
+                    Log.d("yangxinyu ", "识别出来的 " + name);
+                    // match analysis result and all data collections
+                    List<CommendModel> baidu = models.getModels(0);
+                    List<CommendModel> dianbo = models.getModels(1);
+                    List<CommendModel> taobao = models.getModels(4);
 
-                return;
+                    // get some data about the person
+                    if (!YiPlusUtilities.isStringNullOrEmpty(name)) {
+                        for (CommendModel m : baidu) {
+                            if (name.equals(m.getTag_name()) && mBaidu == 0) {
+                                mCurrentModels.add(m);
+                                mBaidu++;
+                                break;
+                            }
+                        }
+
+                        List<CommendModel> dianboPerson = new ArrayList<>();
+                        for (CommendModel m : dianbo) {
+                            if (name.equals(m.getTag_name())) {
+                                dianboPerson.add(m);
+                            }
+                        }
+
+                        // 把 所有的 该人物的点播视频 识别出来。 在随机一个 放到 mCurrentModels
+                        if (dianboPerson.size() > 0) {
+                            randomOneData(dianboPerson);
+                            Log.d("yangxinyu+", "点播视频 数量 " + dianboPerson.size());
+                            mVideo++;
+                        }
+
+                        List<CommendModel> taobaoPerson = new ArrayList<>();
+                        for (CommendModel m : taobao) {
+                            if (name.equals(m.getTag_name())) {
+                                taobaoPerson.add(m);
+                            }
+                        }
+
+                        if (taobaoPerson.size() > 0) {
+                            randomOneData(taobaoPerson);
+                            Log.d("yangxinyu+", "淘宝 商品 数量 " + taobaoPerson.size());
+                            mTaobao++;
+                        }
+                    }
+
+                    //分析这个人的数据
+                    if (mCurrentModels != null && mCurrentModels.size() > 0) {
+                        //hasFace = true;
+                        // show face list
+                        if (mCurrentModels.size() > 1) {
+                            // show some item data about the person
+                            System.out.println("yangxinyu    展示 list 数据 ");
+                            View view = getViewForWindowToList2();
+                            changeLayout(view);
+                            return;
+                        } else if (mCurrentModels.size() == 1) {
+                            // with only one item and is baidu , show detail
+                            String type = mCurrentModels.get(0).getData_source();
+                            int arg2 = 0;
+                            if (BAIDU.equals(type)) {
+                                arg2 = 0;
+                                // show baidu baike data
+                                System.out.println("yangxinyu    展示 百度百科");
+                                View view = getViewForWindowToDetail(models.getModels(arg2), type, name);
+                                changeLayout(view);
+                                return;
+                            } else {
+                                Toast.makeText(this, "别看他了， 他低调...", Toast.LENGTH_SHORT).show();
+                                View errorView = getWelcomeViewPage(false);
+                                changeLayout(errorView);
+                                return;
+                            }
+                        }
+                    }
+                }
             }
-
-            // match analysis result and all data collections
-            List<String> people = map.get("人物");
-            List<CommendModel> baidu = models.getModels(0);
-            List<CommendModel> dianbo = models.getModels(1);
-            List<CommendModel> weibo = models.getModels(2);
-            List<CommendModel> taobao = models.getModels(4);
-
-            // people 取第一个识别出来的 人
-            String name = (people != null && people.size() > 0) ? people.get(0) : "";
-            Log.d("yang", "识别出来的 " + name);
-            if (!YiPlusUtilities.isStringNullOrEmpty(name)) {
-                for (CommendModel m : baidu) {
-                    if (name.equals(m.getTag_name()) && mBaidu == 0) {
-                        mCurrentModels.add(m);
-                        mBaidu++;
-                        break;
-                    }
-                }
-
-                List<CommendModel> dianboPerson = new ArrayList<>();
-                for (CommendModel m : dianbo) {
-                    if (name.equals(m.getTag_name())) {
-                        dianboPerson.add(m);
-                    }
-                }
-
-                // 把 所有的 该人物的点播视频 识别出来。 在随机一个 放到 mCurrentModels
-                if (dianboPerson.size() > 0) {
-                    randomOneData(dianboPerson);
-                    Log.d("yang", "点播视频 数量 " + dianboPerson.size());
-                    mVideo++;
-                }
-
-                List<CommendModel> weiboPerson = new ArrayList<>();
-                for (CommendModel m : weibo) {
-                    if (name.equals(m.getTag_name())) {
-                        weiboPerson.add(m);
-                    }
-                }
-
-                if (weiboPerson.size() > 0) {
-                    randomOneData(weiboPerson);
-                    mWeibo++;
-                }
-
-
-                List<CommendModel> taobaoPerson = new ArrayList<>();
-                for (CommendModel m : taobao) {
-                    if (name.equals(m.getTag_name())) {
-                        taobaoPerson.add(m);
-                    }
-                }
-
-                if (taobaoPerson.size() > 0) {
-                    randomOneData(taobaoPerson);
-                    Log.d("yang", "淘宝 商品 数量 " + taobaoPerson.size());
-                    mTaobao++;
-                }
-            }
-
-            if (mCurrentModels != null && mCurrentModels.size() > 0) {
-                hasFace = true;
-                // show face list
-                if (mCurrentModels != null && mCurrentModels.size() > 1) {
-                    showAnsyncList();
-                    setListDatas(mCurrentModels);
-                } else if (mCurrentModels.size() == 1) {
-                    // with only one item and is baidu or dianbo SO, show detail
-                    String type = mCurrentModels.get(0).getData_source();
-                    String person = mCurrentModels.get(0).getDisplay_title();
-                    int arg2 = 0;
-                    if (BAIDU.equals(type)) {
-                        arg2 = 0;
-                    } else if (VIDEO.equals(type)) {
-                        arg2 = 1;
-                    } else if (WEIBO.equals(type)) {
-                        arg2 = 2;
-                    } else if (DOUBAN.equals(type)) {
-                        arg2 = 3;
-                    } else if (TAOBAO.equals(type)) {
-                        arg2 = 4;
-                        person = mCurrentModels.get(0).getTag_name();
-                    }
-
-                    updateManagetView(models.getModels(arg2), type, person);
-                }
-            } else {
-                noAnalysisFaceResult();
-            }
-        } else {
-            noAnalysisFaceResult();
         }
+
+        noAnalysisFaceResult();
     }
 
     private View getViewForWindowToProduct() {
-        View view = LayoutInflater.from(this).inflate(R.layout.notifi_detail_layout, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.notifi_detail_layout, mContent, false);
 
         TextView title = (TextView) view.findViewById(R.id.notifi_page_title);
         mFliper = (AdapterViewFlipper) view.findViewById(R.id.notifi_page_content);
@@ -664,16 +641,16 @@ public class MainActivity extends AppCompatActivity {
 
     private View getViewForWindowToDetail(List<CommendModel> datas, String source, String people) {
 
-        View view = LayoutInflater.from(this).inflate(R.layout.notifi_detail_layout, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.notifi_detail_layout, mContent, false);
 
         TextView title = (TextView) view.findViewById(R.id.notifi_page_title);
         mFliper = (AdapterViewFlipper) view.findViewById(R.id.notifi_page_content);
         Button background = (Button) view.findViewById(R.id.notifi_page_background);
 
-//        background.setOnKeyListener(detailKeyListener);
+        background.setOnKeyListener(detailKeyListener);
 
         title.setText(source);
-//        FilperAdapter adapter = new FilperAdapter(this);
+        FilperAdapter adapter = new FilperAdapter(this);
         if (TAOBAO.equals(source)) {
             List<CommendModel> showTb = new ArrayList<>();
             for (int j = 0; j < datas.size(); ++j) {
@@ -684,7 +661,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Log.d("yang", "淘宝 商品  " + showTb.size());
-//            adapter.setDatas(showTb, 4);
+            adapter.setDatas(showTb, 4);
         } else {
             List<CommendModel> showOther = new ArrayList<>();
             for (int i = 0; i < datas.size(); ++i) {
@@ -701,10 +678,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-//            adapter.setDatas(showOther, 0);
+            adapter.setDatas(showOther, 0);
         }
 
-//        mFliper.setAdapter(adapter);
+        mFliper.setAdapter(adapter);
 
         return view;
     }
@@ -720,31 +697,17 @@ public class MainActivity extends AppCompatActivity {
         mTaobao = 0;
     }
 
-    private Map<String, List<String>> handleAnalysisResult() {
-        Map<String, List<String>> map = new HashMap<>();
-        FacesModel faces = mAnalysisResultModel.getFaces();
-
-        for (int i = 0; faces != null && i < faces.getFace_counts(); ++i) {
-            if (map.containsKey("人物")) {
-                map.get("人物").add(faces.getFace_attribute().get(i).getStar_name());
-            } else {
-                List<String> person = new ArrayList<>();
-                person.add(faces.getFace_attribute().get(i).getStar_name());
-                map.put("人物", person);
-            }
-        }
-
-        return map;
-    }
-
     private void noAnalysisFaceResult() {
         hasFace = false;
         if (product_list != null && product_list.size() > 0 && !hasFace) {
             // 展示 商品页面
-            showProductDetailView();
+            System.out.println("yangxinyu  没有识别出 人来，展示产品页面");
+            View productView = showProductDetailView();
+            changeLayout(productView);
         } else {
             // show error page
-            showYiPlusLogo(false);
+            View view = showYiPlusLogo(false);
+            changeLayout(view);
         }
     }
 
@@ -757,14 +720,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showAnsyncList() {
-        if (manager == null) {
-            manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        }
-
-        WindowManager.LayoutParams params = setLayoutParams();
+    private View showAnsyncList() {
         View view = getViewForWindowToList2();
-        addViewToManager(view, params);
+        return view;
     }
 
     private void setListDatas(List<CommendModel> listDatas) {
@@ -800,7 +758,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private View getViewForWindowToList2() {
-        View view = LayoutInflater.from(this).inflate(R.layout.view_ansync_list, null, false);
+        View view = LayoutInflater.from(this).inflate(R.layout.view_ansync_list, mContent, false);
         baiduContainer = (RelativeLayout) view.findViewById(R.id.view_baidu_container);
         baiduTitle = (TextView) view.findViewById(R.id.view_baidu_title);
         baiduContent = (TextView) view.findViewById(R.id.view_baidu_content);
@@ -836,6 +794,24 @@ public class MainActivity extends AppCompatActivity {
             image.setImageBitmap(screenBitmap);
         }
 
+        for (CommendModel model : mCurrentModels) {
+            if (BAIDU.equals(model.getData_source())) {
+                baiduTitle.setText(model.getDisplay_title());
+                baiduContent.setText(model.getDisplay_brief());
+                ImageLoader.getInstance().displayImage(model.getDetailed_image_url(), baiduImage);
+                baiduBg.setTag(model.getData_source() + " " + model.getDisplay_title());
+            } else if (VIDEO.equals(model.getData_source())) {
+                dianboTitle.setText(model.getDisplay_title());
+                dianboContent.setText(model.getDisplay_brief());
+                ImageLoader.getInstance().displayImage(model.getDetailed_image_url(), dianboImage);
+                dianboBg.setTag(model.getData_source() + " " + model.getDisplay_title());
+            } else if (TAOBAO.equals(model.getData_source())) {
+                Log.d("Yi+", "image URL  " + model.getDetailed_image_url());
+                ImageLoader.getInstance().displayImage(model.getDetailed_image_url(), taobaoImage);
+                taobaoBg.setTag(model.getData_source() + " " + model.getTag_name());
+            }
+        }
+
         return view;
     }
 
@@ -844,7 +820,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
 
             if (YiPlusUtilities.DOUBLECLICK) {
-                System.out.println("majie  button    " + keyCode);
+                System.out.println("yangxinyu  button    " + keyCode);
                 synchronized (YiPlusUtilities.class) {
                     YiPlusUtilities.DOUBLECLICK = false;
                 }
@@ -852,13 +828,11 @@ public class MainActivity extends AppCompatActivity {
                 int id = view.getId();
                 if (id == R.id.notifi_page_background) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        manager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-                        WindowManager.LayoutParams params = setLayoutParams();
                         View view2 = getViewForWindowToList2();
                         if (mCurrentModels != null && !isFirstPage) {
                             isFirstPage = true;
                             setListDatas(mCurrentModels);
-                            addViewToManager(view2, params);
+                            changeLayout(view2);
                         } else {
                             sendMessageForHandle(3, null);
                         }
@@ -893,5 +867,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
 

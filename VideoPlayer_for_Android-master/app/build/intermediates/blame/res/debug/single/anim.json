@@ -1,58 +1,58 @@
 [
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/animation_join.xml",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/anim/animation_join.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/button_big.xml",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/anim/button_big.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_in_top.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/button_small.xml",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/anim/button_small.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/animation_scale_big.xml",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/anim/animation_scale_big.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_popup_exit.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_popup_enter.xml"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/button_big.xml",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/anim/button_big.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/button_small.xml",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/anim/button_small.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/animation_join.xml",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/anim/animation_join.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/animation_scale_big.xml",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/anim/animation_scale_big.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/anim/abc_slide_in_bottom.xml"
     }
 ]

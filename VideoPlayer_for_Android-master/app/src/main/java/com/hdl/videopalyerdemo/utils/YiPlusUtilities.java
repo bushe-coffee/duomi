@@ -286,4 +286,24 @@ public class YiPlusUtilities {
 
         return result;
     }
+
+    public static String getBase64FromBitmap(Bitmap mBitmap) {
+        String result = "";
+        try {
+            if (mBitmap != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                int size = 100; // 100 表示 不压缩
+                mBitmap.compress(Bitmap.CompressFormat.JPEG, size, baos);
+                baos.flush();
+                baos.close();
+                byte[] bitmapBytes = baos.toByteArray();
+                result = Base64.encodeToString(bitmapBytes, Base64.NO_WRAP);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = "";
+        }
+
+        return result;
+    }
 }

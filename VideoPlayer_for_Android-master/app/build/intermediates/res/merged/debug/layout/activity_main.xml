@@ -2,15 +2,19 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/bj"
+    android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.hdl.vol.VedioPlayer
             android:id="@+id/vp_player"
+            android:layout_margin="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -21,34 +25,31 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="#000000"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/blue_button"
-            android:onClick="onPlay"
-            android:text="播放"
-            android:textColor="#000000" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/blue_button"
-            android:onClick="onPause"
-            android:text="暂停"
-            android:textColor="#000000" />
-
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_content_parent"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/main_content_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bj"
+            android:elevation="4dp" />
+
+        <LinearLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp" />
+
+    </RelativeLayout>
 
 </LinearLayout>

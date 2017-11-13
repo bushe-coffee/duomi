@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
         "source": "/Users/bushetianzhen/.android/build-cache/f34e557afba744df254b5510bbc0ad8457aa2683/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
     }
 ]

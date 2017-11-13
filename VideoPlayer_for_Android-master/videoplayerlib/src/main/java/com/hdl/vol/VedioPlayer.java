@@ -374,6 +374,7 @@ public class VedioPlayer extends LinearLayout {
                     if (onVedioPalyerListener != null) {
                         onVedioPalyerListener.onReloadSuccess();
                     }
+
                     isPlaying = true;
                     lampItem.setOpen(isPlaying);
                     Log.e(TAG, "onInfo: 210");

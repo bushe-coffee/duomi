@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "outputFile": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -524,7 +524,7 @@
                     "endOffset": 2015
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -543,7 +543,7 @@
                     "endOffset": 2062
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -562,7 +562,7 @@
                     "endOffset": 2113
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -2766,7 +2766,7 @@
                     "endOffset": 29825
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/dimens.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -2785,7 +2785,7 @@
                     "endOffset": 29881
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/dimens.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -4134,7 +4134,7 @@
                     "endOffset": 34759
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/strings.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 4,
@@ -4153,7 +4153,7 @@
                     "endOffset": 34820
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/strings.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -4287,7 +4287,7 @@
                     "endOffset": 35601
                 },
                 "from": {
-                    "file": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/values/styles.xml",
+                    "file": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/values/styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

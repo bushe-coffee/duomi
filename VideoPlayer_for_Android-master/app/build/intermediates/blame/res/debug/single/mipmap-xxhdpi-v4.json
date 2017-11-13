@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/pause.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/res/mipmap-xxhdpi-v4/pause.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/play.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/res/mipmap-xxhdpi-v4/play.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/play.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/res/mipmap-xxhdpi-v4/play.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/pause.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/videoplayerlib/build/intermediates/bundles/default/res/mipmap-xxhdpi-v4/pause.png"
     }
 ]

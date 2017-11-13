@@ -1,30 +1,46 @@
 [
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/yiplus_logo.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/yiplus_logo.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_fast_rewind.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/ic_fast_rewind.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/bj.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/bj.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_play_circle.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/ic_play_circle.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/default_taobao.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/default_taobao.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/yiplus_logo.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/yiplus_logo.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/doupan_star.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/doupan_star.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_pause_circle.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/ic_pause_circle.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/comment.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/comment.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/default_taobao.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/default_taobao.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/comment_people.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/comment_people.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/bj.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/bj.png"
     },
     {
-        "merged": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/button_background.png",
-        "source": "/Users/bushetianzhen/Downloads/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/button_background.png"
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/button_background.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/button_background.png"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/comment_people.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/comment_people.png"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/doupan_star.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/doupan_star.png"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/comment.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/comment.png"
+    },
+    {
+        "merged": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_fast_forward.png",
+        "source": "/Users/bushetianzhen/Downloads/git_demo/duomi/VideoPlayer_for_Android-master/app/src/main/res/drawable-xhdpi/ic_fast_forward.png"
     }
 ]
